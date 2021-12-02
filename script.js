@@ -17,38 +17,82 @@ function writePassword() {
 
   // ask if user would like to include lowercase characters in their password
   // if user does not provide valid response, they must retry
-  var lowercase = window.prompt("Would you like to include lowercase letters in your password? Type 'Yes' or 'No'")
+  function lower() {
+    var lowercase = window.prompt("Would you like your password to include numbers? Type 'Yes' or 'No'")
   // converting to lowercase so all answers will be valid
-  lowercase = lowercase.toLowerCase();
+    lowercase = lowercase.toLowerCase();
 
-  if (lowercase === "" || lowercase === null) {
-    window.alert("Invalid Response. Please try again.")
-    return writePassword()
-  }
-  else if (lowercase === "yes") {
+  // ***ASK ABT !== "YES" why not working
+    if (lowercase === "" || lowercase === null) {
+      window.alert("Invalid Response. Please try again.")
+      return lower();
+    }
+    else if (lowercase === "yes") {
     var lowercase = ["a","b","c"]
-  }
-  else {
+    }
+    else {
     var lowercase = ""
+    }
   }
-  console.log(lowercase)
+  // call the lowercase function
+  lower();
 
-  // ask if user would like to include uppercase characters in their password
-  var uppercase = window.prompt("Would you like to include uppercase letters in your password? Type 'Yes' or 'No'")
-  // converting to lowercase so all answers will be valid
-  uppercase = uppercase.toLowerCase();
+  function upper() {
+    // ask if user would like to include uppercase characters in their password
+    var uppercase = window.prompt("Would you like your password to include numbers? Type 'Yes' or 'No'")
+    // converting to lowercase so all answers will be valid
+    uppercase = uppercase.toLowerCase();
 
-  if (uppercase === "" || uppercase === null) {
-    window.alert("Invalid Response. Please try again.")
-    return writePassword()
+    if (uppercase === "" || uppercase === null) {
+      window.alert("Invalid Response. Please try again.")
+      return upper();
+    }
+    else if (uppercase === "yes") {
+      var uppercase = ["A","B","C"]
+    }
+    else {
+      var uppercase = ""
+    }
   }
-  else if (uppercase === "yes") {
-    var uppercase = ["A","B","C"]
+  // call uppercase function
+  upper();
+
+  // numeric function
+  function numeric() {
+    var num = window.prompt("Would you like your password to include numbers? Type 'Yes' or 'No'")
+    num = num.toLowerCase();
+
+    if (num === ""|| num === null) {
+      window.alert("Invalid Response. Please try again.")
+      return numeric();
+    }
+    else if (num==="yes") {
+      var num = [1,2,3,4,5,6,7,8,9]
+    }
+    else {
+      var num = ""
+    }
   }
-  else {
-    var uppercase = ""
+
+  // call numeric function
+  numeric();
+
+  // ask user if they want special characters in their password
+  function specialChar() {
+    var specialCharacter = window.prompt("Would you like your password to include special characters? Type 'Yes' or 'No'")
+    specialChar = specialChar.toLowerCase();
+
+    if (specialChar === "" || specialChar === null) {
+      window.alert("Invalid Response. Please try again.")
+      return specialChar();
+    }
+
+    else if (specialChar === "yes") {
+      var specialCharacter = ["!","#","$","%"]
+    }
+
+    else (specialChar === null)
   }
-  console.log(uppercase)
 
 
   var password = generatePassword();

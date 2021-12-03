@@ -8,8 +8,8 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   // Ask how long user would like password to be
   // password length must be between 8 and 128 characters
-  var length = window.prompt("How long would you like your password to be? Password must be between 8 and 128 characters in length. Please type a number.")
-  if (length < 8 || length > 128) {
+  passwordLength = window.prompt("How long would you like your password to be? Password must be between 8 and 128 characters in length. Please type a number.")
+  if (passwordLength < 8 || passwordLength > 128) {
     window.alert("Invalid password length. Please try again.")
     return writePassword()
   }
@@ -20,10 +20,9 @@ function writePassword() {
     lowercase = window.prompt("Would you like your password to include lowercase letters? Type 'Yes' or 'No'")
   // converting to lowercase so all answers will be valid
     lowercase = lowercase.toLowerCase();
-    console.log(lowercase)
 
   // ***ASK ABT !== "YES" why not working
-    if (lowercase === "" || lowercase === null || lowercase !== "yes") {
+    if (lowercase === "" || lowercase === null) {
       window.alert("Invalid Response. Please try again.")
       return lower();
     }
@@ -31,7 +30,7 @@ function writePassword() {
     lowercase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
     }
     else {
-    lowercase = null
+    lowercase = ""
     }
   }
   // call the lowercase function
@@ -52,7 +51,7 @@ function writePassword() {
       uppercase = ["A","B","C", "D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     }
     else {
-      uppercase = null
+      uppercase = ""
     }
   }
   // call uppercase function
@@ -71,7 +70,7 @@ function writePassword() {
       num = [1,2,3,4,5,6,7,8,9]
     }
     else {
-      num = null
+      num = ""
     }
   }
 
@@ -89,11 +88,11 @@ function writePassword() {
     }
 
     else if (specialCharacter === "yes") {
-      specialCharacter = ["!","#","$","%"]
+      specialCharacter = ["!","#","$","%","&","(",")","*","+","/",":",";","<",">","[","]","^"]
     }
 
     else {
-      specialCharacter = null
+      specialCharacter = ""
     }
   }
   // call special character
@@ -101,28 +100,56 @@ function writePassword() {
 
   // define the generate password function
   function generatePassword() {
-    if (lowercase !== null) {
+    if (lowercase !== "") {
       var lowerNum = Math.floor(Math.random() * lowercase.length)
+      // index the lowercase array with the randomly generated number
+      lowercaseChar = lowercase[lowerNum]
     }
-    // index the lowercase array with the randomly generated number
-    lowercaseChar = lowercase[lowerNum]
+    else {
+      lowercaseChar = ""
+    }
 
     // follow the same process for the other characters
-    if (uppercase !== null) {
+    if (uppercase !== "") {
       var upperNum = Math.floor(Math.random() * uppercase.length)
+      uppercaseChar = uppercase[upperNum]
     }
-    uppercaseChar = uppercase[upperNum]
+    else {
+      uppercaseChar = ""
+    }
 
-    if (num !== null) {
+    if (num !== "") {
       var randomNum = Math.floor(Math.random() * num.length)
+      numericChar = num[randomNum]
     }
-    numericChar = num[randomNum]
+    else {
+      numericChar = ""
+    }
 
-    if (specialCharacter !== null) {
+    if (specialCharacter !== "") {
       var specialNum = Math.floor(Math.random() * specialCharacter.length)
+      specChar = specialCharacter[specialNum]
     }
-    specChar = specialCharacter[specialNum]
-    console.log(lowercaseChar+uppercaseChar+numericChar+specChar)
+    else {
+      specChar = ""
+    }
+    // make sure that all chosen characters are included in the password
+    half = lowercaseChar+uppercaseChar+numericChar+specChar
+    // the run a for loop to fill the remaining length of the password
+    // calculating the remaining length
+    lengthLeft = passwordLength - half.length
+    // concat the arrays of the chosen characters
+    var concatArray = specialCharacter+num+uppercase+lowercase
+    var passwordGen = ''
+    for (var i = 0; i < lengthLeft; i++) {
+      var passChar = Math.floor(Math.random() * concatArray.length + 1)
+      passwordGen += concatArray.charAt(passChar)
+    }
+
+    var finalPassword = passwordGen + half
+    console.log(finalPassword)
+    return finalPassword;
+
 
   }
   generatePassword();

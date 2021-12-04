@@ -144,12 +144,10 @@ function generatePassword() {
   lengthLeft = passwordLength - half.length
   // concat the arrays of the chosen characters
   var concatArray = specialCharacterStr+numStr+uppercaseStr+lowercaseStr;
-  console.log(concatArray)
   var passwordGen = ''
   for (var i = 0; i < lengthLeft; i++) {
     var passChar = Math.floor(Math.random() * concatArray.length + 1)
     passwordGen += concatArray.charAt(passChar)
-    console.log(passwordGen)
   }
 
   var finalPassword = passwordGen + half

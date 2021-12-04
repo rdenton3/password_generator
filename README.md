@@ -1,19 +1,18 @@
 # Random Password Generator - Challenge 3
 
 ## Description
-Create a website that randomly generates a password and meets the following criteria: 
-WHEN I click the button to generate a password
-THEN I am presented with a series of prompts for password criteria
-WHEN prompted for password criteria
-THEN I select which criteria to include in the password
-WHEN prompted for the length of the password
-THEN I choose a length of at least 8 characters and no more than 128 characters
-WHEN asked for character types to include in the password
-THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-WHEN I answer each prompt
-THEN my input should be validated and at least one character type should be selected
-WHEN all prompts are answered
-THEN a password is generated that matches the selected criteria
-WHEN the password is generated
-THEN the password is either displayed in an alert or written to the page
+Created a website that randomly generates a password given specific character types (uppercase, lowercase,numbers, special characters) and length requirements (between 8-128 characters). 
+
+## Built With
+* HTML
+* CSS
+* JavaScript
+
+## Website Link
+https://rdenton3.github.io/password_generator/ 
+
+## Photos
+![Password Generator Website Photo1](./images/pass1.png)
+![Password Generator Website Photo2](./images/pass2.png)
+
 
